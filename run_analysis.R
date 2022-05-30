@@ -111,4 +111,4 @@ tidy.obs <- tidy.obs %>% mutate(activity = act.names$act_desc[activity])
 # Summarise for the average of each activity and subject
 output_data <- tidy.obs %>% group_by(activity, subject) %>% summarise_if(is.numeric, mean)
 
-write.table(output_data, "./data/run_analysis_out.txt")
+write.table(output_data, "./data/run_analysis_out.txt",row.names = FALSE )
