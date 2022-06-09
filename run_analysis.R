@@ -42,16 +42,20 @@
 setwd("~/CourseraRProjects/DataCleaning_Course_Project")
 library(tidyverse)
 if(!file.exists("./data")) {dir.create("./data")}
+fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileURL, destfile = "./data/healthdata.zip", method = "curl")
+unzip("./data/healthdata.zip", exdir = "../")
+
 
 # Read in the files to establish subject, activity and variables for each observation
-subjecttestURL <- "./UCI HAR Dataset/test/subject_test.txt"
-subjecttrainURL <- "./UCI HAR Dataset/train/subject_train.txt"
-obstestURL <- "./UCI HAR Dataset/test/X_test.txt"
-obstrainURL <- "./UCI HAR Dataset/train/X_train.txt"
-acttestURL <- "./UCI HAR Dataset/test/y_test.txt"
-acttrainURL <- "./UCI HAR Dataset/train/y_train.txt"
-featuresURL <- "./UCI HAR Dataset/features.txt"
-actnamesURL <- "./UCI HAR Dataset/activity_labels.txt"
+subjecttestURL <- "../UCI HAR Dataset/test/subject_test.txt"
+subjecttrainURL <- "../UCI HAR Dataset/train/subject_train.txt"
+obstestURL <- "../UCI HAR Dataset/test/X_test.txt"
+obstrainURL <- "../UCI HAR Dataset/train/X_train.txt"
+acttestURL <- "../UCI HAR Dataset/test/y_test.txt"
+acttrainURL <- "../UCI HAR Dataset/train/y_train.txt"
+featuresURL <- "../UCI HAR Dataset/features.txt"
+actnamesURL <- "../UCI HAR Dataset/activity_labels.txt"
 
 train.subjects <- read.table(subjecttrainURL)
 test.subjects <- read.table(subjecttestURL)
@@ -60,7 +64,7 @@ test.vals <- read.table(obstestURL)
 train.act <- read.table(acttrainURL)
 test.act <- read.table(acttestURL)
 features <- read.table(featuresURL)
-act_names <- read.table(actnamesURL)
+act.names <- read.table(actnamesURL)
 
 # Rename columns of single variable data sets (subjects and activities).
 # Doing this early so as to not have to rename columns in the format 'V1...1'
@@ -79,7 +83,8 @@ act.names <- act.names %>% rename(act_no = V1, act_desc = V2)
 # than the raw mean.
 
 # Find the column positions with the mean() and std() values
-col_numbers <- grep("-mean\\(\\)|-std\\(\\)", features$value_name)
+col_numbers <- grep("mean|std", features$value_name)
+#col_numbers <- grep("-mean\\(\\)|-std\\(\\)", features$value_name)
 
 # Build the list of old column names, this allow for flexibility if columns
 # are added or removed in the future
@@ -109,6 +114,7 @@ tidy.obs <- tidy.obs %>% mutate(activity = act.names$act_desc[activity])
 
 # Group tidy observations by activity and subject
 # Summarise for the average of each activity and subject
-output_data <- tidy.obs %>% group_by(activity, subject) %>% summarise_if(is.numeric, mean)
+output_data <- tidy.obs %>% group_by(activity, subject) %>% summarise_all(mean)
+#output_data <- tidy.obs %>% group_by(activity, subject) %>% summarise_if(is.numeric, mean)
 
 write.table(output_data, "./data/run_analysis_out.txt",row.names = FALSE )
