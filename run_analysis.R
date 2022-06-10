@@ -77,10 +77,9 @@ features <- features %>% rename(value_no = V1, value_name = V2)
 act.names <- act.names %>% rename(act_no = V1, act_desc = V2)
 
 # setup new and old column vectors for the feature data sets
-# only capture the column names that have mean() and std() at the 
-# end of the feature name. Other values excluded include meanFreq()
-# values which are a weighted average of frequency components rather
-# than the raw mean.
+# only capture the column names that have mean and std in the 
+# feature name.
+
 
 # Find the column positions with the mean() and std() values
 col_numbers <- grep("mean|std", features$value_name)
