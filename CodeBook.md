@@ -1,3 +1,4 @@
+Note: best viewed in raw format.
 
 
 Human Activity Recognition Using Smartphones Dataset
@@ -24,34 +25,34 @@ Files from the original study used in this analysis include:
 
 Data sets used or created for the analysis:
 
-   - READ.ME - description of the analysis processing performed
+   READ.ME - description of the analysis processing performed
 
-   - 8 files from the original the original project were loaded for the analysis:
+   8 files from the original the original project were loaded for the analysis:
 
-   - Subjects associated with each observation in both test and train data:
-   --  subjecttestURL <- "./UCI HAR Dataset/test/subject_test.txt" 
-            - value between 1 and 30 representing on of the randomly selected subjects
-         --  subjecttrainURL <- "./UCI HAR Dataset/train/subject_train.txt"
-            - value between 1 and 30 representing one of the randomly selected subjects
+   Subjects associated with each observation in both test and train data:
+      1. subjecttestURL <- "./UCI HAR Dataset/test/subject_test.txt" 
+            value between 1 and 30 representing on of the randomly selected subjects
+      2. subjecttrainURL <- "./UCI HAR Dataset/train/subject_train.txt"
+            value between 1 and 30 representing one of the randomly selected subjects
    
    Feature observations for both test and train data:
-         3. obstestURL <- "./UCI HAR Dataset/test/X_test.txt" 
-            - 561 observational values listed in features.txt
-         4. obstrainURL <- "./UCI HAR Dataset/train/X_train.txt" 
-            - 561 observational values listed in features.txt
+      3. obstestURL <- "./UCI HAR Dataset/test/X_test.txt" 
+            561 observational values listed in features.txt
+      4. obstrainURL <- "./UCI HAR Dataset/train/X_train.txt" 
+            561 observational values listed in features.txt
    
    Activity identifier for each of the observations in test and train
-         5. acttestURL <- "./UCI HAR Dataset/test/y_test.txt" 
-            - values between 1 and 6 listed in activity labels.txt
-         6. acttrainURL <- "./UCI HAR Dataset/train/y_train.txt" 
-            - values between 1 and 6 listed in activity labels.txt
+      5. acttestURL <- "./UCI HAR Dataset/test/y_test.txt" 
+            values between 1 and 6 listed in activity labels.txt
+      6. acttrainURL <- "./UCI HAR Dataset/train/y_train.txt" 
+            values between 1 and 6 listed in activity labels.txt
    
    Feature labels for test and training
-         7. featuresURL <- "./UCI HAR Dataset/features.txt" 
+      7. featuresURL <- "./UCI HAR Dataset/features.txt" 
             - label for each of the observational values recorded for a subject and activity.
    
    Activity labels for each of the activity indicators
-         8. actnamesURL <- "./UCI HAR Dataset/activity_labels.txt" 
+      8. actnamesURL <- "./UCI HAR Dataset/activity_labels.txt" 
             - list of activities
             1 WALKING
             2 WALKING_UPSTAIRS
@@ -180,12 +181,16 @@ Additional data modification performed by the run_analysis.R script:
       78 fBodyBodyGyroJerkMag-std()
       79 fBodyBodyGyroJerkMag-meanFreq()
       
-   col_names_new - character vector of column names for all 66 feature values (79 values)
+   col_names_new 
+      - character vector of column names for all 66 feature values (79 values)
       tBodyAcc-mean()-X ... fBodyBodyGyroJerkMag-meanFreq()
-   col_names_old - character vector of default column names created by reading in the values (79 values)
+   
+   col_names_old 
+      - character vector of default column names created by reading in the values (79 values)
       v1...v543
-   col_numbers - vector of numbers representing columns in the features data frames which will (79 values)
-      be selected for the final tidy data set. Used to build the old and new column names vector
+   
+   col_numbers 
+      - vector of numbers representing columns in the features data frames which will be selected for the final tidy data set. Used to build the old and new column names vector
       1 ... 543
    
    
