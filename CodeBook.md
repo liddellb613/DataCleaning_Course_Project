@@ -29,7 +29,7 @@ Data sets used or created for the analysis:
    - 8 files from the original the original project were loaded for the analysis:
 
    - Subjects associated with each observation in both test and train data:
-         --  subjecttestURL <- "./UCI HAR Dataset/test/subject_test.txt" 
+   --  subjecttestURL <- "./UCI HAR Dataset/test/subject_test.txt" 
             - value between 1 and 30 representing on of the randomly selected subjects
          --  subjecttrainURL <- "./UCI HAR Dataset/train/subject_train.txt"
             - value between 1 and 30 representing one of the randomly selected subjects
